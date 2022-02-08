@@ -1,0 +1,132 @@
+<html>
+<head>
+	<title>Atom 3D</title>
+  <style>
+    body, .atom , .core, .core::before, .core::after{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }    
+    body{
+      width: 100%;
+      height: 100%;
+    }
+    *,
+    *::before,
+    *::after{
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      box-sizing: border-box;
+    }
+    html{
+      width: 100vw;
+      height: 100vh;
+    }
+    body{
+      background-image:
+          url(https://img.freepik.com/free-photo/multicolored-paper-background_23-2148182446.jpg?size=626&ext=jpg);
+      background-size:cover;
+      background-position:center;
+      overflow: hidden;
+    }
+    .moon{
+		width: 550px;
+      height: 550px;
+      position: absolute;
+      border-radius: 50%;
+      transform-style: preserve-3d;
+      animation: 3.8s linear infinite;
+      background-image: linear-gradient(0deg, rgba(253, 253, 150, 1) 25%, rgba(154, 255, 206, 1) 50%, rgba(219, 243, 255, 1) 75%, rgba(255, 215, 255, 1) 100%);
+      animation-name: rotatemoon;
+      
+    }
+    .atom{
+      width: 340px;
+      height: 340px;
+      transform-style: preserve-3d;
+      z-index:10
+    }
+    .core, .core::before, .core::after{
+      position: absolute;
+      border-radius: 5%;
+      transform-style: preserve-3d;
+      animation: 3.8s linear infinite;
+    }
+    .core{
+      width: 50%;
+      height: 50%;
+      animation-name: rotate3DZ;
+    }
+    .core::after, .core::before{
+      width: 200%;
+      height:200%;
+      content:'';
+      border: 20px solid #FA84B0;
+      box-shadow: 0 0 10px 1px #F0C5F7, 0 0 10px 1px #F0C5F7 after-white-space inset;
+    }    
+    .core:first-child{
+      background: radial-gradient(circle at 25% 25% #F7C4D7 -75%, #F7C4D7, #F7C4D7 75%)
+    }
+    .core:first-child::before{
+      animation-name: rotate3DX;
+    }
+    .core:first-child::after{
+      animation-name: rotate3DY;
+    }
+    .core:last-child{
+      box-shadow: 0 0 5px 10px #fff;
+/*       width: 300px;
+      height: 300px; */
+    }
+    .core:last-child::before{
+      animation-name: rotate3DXY;
+    }
+    .core:last-child::after{
+      animation-name: rotate3DYX
+    }
+
+    @keyframes rotate3DX{
+      to{
+        transform: rotate3d(-1 , 0, 0, 360deg);
+      }
+    }
+    @keyframes rotate3DY{
+      to{
+        transform: rotate3d(0, 1, 0, 360deg);
+      }
+    }
+    @keyframes rotate3DZ{
+      to{
+        transform: rotate3d(0 , 0, 1, 360deg);
+      }
+    }
+    @keyframes rotate3DXY{
+      to{
+        transform: rotate3d(1 , -1, 0, 360deg);
+      }
+    }
+    @keyframes rotate3DYX{
+      to{
+        transform: rotate3d(1 , 1, 0, 360deg);
+      }
+    }
+    @keyframes rotatemoon{
+      form{
+		   transform: rotatey(0deg);
+      }
+      to{
+         transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="atom">
+    <div class="core"></div>
+    <div class="core"></div>
+  </div>
+  <div class="moon"></div>
+</body>
+</html>
